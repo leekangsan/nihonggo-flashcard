@@ -5,21 +5,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="res/css/tachyons.min.css" />
+        <link rel="stylesheet" href="res/css/app.css" />
         <script src="res/js/vue.min.js"></script>
         <title>日本語フラッシュカード</title>   
     </head>
     <body>
-        <main id="app" class="sans-serif mw8 w-100 center pa4">
-            <div id="welcomePage" v-if="screen === 0">
-                <h1 class="lh-title">Japanese N5 Vocabulary Flash Cards</h1>
-                <p class="lh-copy">Enter the English translation of the given Japanese characters.</p>
-                <button class="f6 link dim br-pill ph3 pv2 mb2 dib white bg-near-black ph4 mv2 shadow-4 bn" v-on:click="goToScreen(1)">Start &raquo;</button>
+        <div class="pa4">
+            <div id="app" class="sans-serif mw8 w-100 center relative">
+                <transition name="fade">
+                    <div id="welcomePage" class="absolute" v-if="screen === 0">
+                        <h1 class="f2 lh-title">Japanese N5 Vocabulary Flash Cards</h1>
+                        <p class="lh-copy">Enter the English translation of the given Japanese characters.</p>
+                        <button class="f6 link dim br-pill ph3 pv2 mb2 dib white bg-near-black ph4 mv2 shadow-4 bn" v-on:click="goToScreen(1)">Start &raquo;</button>
+                    </div>
+                </transition>
+                <transition name="fade">
+                    <div id="gamePage" class="absolute w-100" v-if="screen === 1">
+                        <h1 class="f-headline tc mt6">日</h1>
+                        <div class="db tc">
+                            <input type="text" class="pa2 br2 ba b--black-20 near-black center db tc" placeholder="Answer here" maxlength="128" autofocus />
+                            <button class="f6 link dim br-pill ph3 pv2 mb2 dib white bg-near-black ph4 mv4 shadow-4 bn">Submit</button>
+                            <br />
+                            <span class="db link dib gray center pa2" style="cursor: pointer;" v-on:click="goToScreen(0)">Return</span>
+                        </div>
+                    </div>
+                </transition>
             </div>
-            <div id="gamePage" v-if="screen === 1">
-                <h1 class="f-headline tc mt6">日</h1>
-                <input type="text" class="pa2 br2 ba b--black-20 near-black center db tc" placeholder="Answer here" maxlength="128" autofocus />
-            </div>
-        </main>
+        </div>
         <script src="res/js/app.js"></script>
     </body>
 </html>
