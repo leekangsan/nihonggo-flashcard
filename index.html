@@ -21,7 +21,7 @@
                 </transition>
                 <transition name="fade">
                     <div id="gamePage" class="absolute w-100" v-if="screen === 1">
-                        <h1 class="f-headline tc mt6">日</h1>
+                        <h1 class="f-headline tc mt6">{{ currentWord.key }}</h1>
                         <div class="db tc">
                             <input type="text" class="pa2 br2 ba b--black-20 near-black center db tc" placeholder="Answer here" maxlength="128" autofocus />
                             <button class="f6 link dim br-pill ph3 pv2 mb2 dib white bg-near-black ph4 mv4 shadow-4 bn">Submit</button>
@@ -33,5 +33,6 @@
             </div>
         </div>
         <script src="res/js/app.js"></script>
+        <script src="res/js/dictionary.js"></script>
     </body>
 </html>
